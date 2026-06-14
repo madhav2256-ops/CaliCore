@@ -1,6 +1,6 @@
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import CountUp from 'react-countup'
 import { Star, Users, Dumbbell, Calendar } from 'lucide-react'
 
 const stats = [
@@ -9,6 +9,34 @@ const stats = [
   { icon: Dumbbell, value: 9, suffix: '', label: 'Disciplines', color: 'text-accent-gold' },
   { icon: Calendar, value: 2026, suffix: '', label: 'Established', color: 'text-accent-gold', noAnimate: true },
 ]
+
+function AnimatedNumber({ value, duration = 1500, decimals = 0, suffix = '' }: { value: number, duration?: number, decimals?: number, suffix?: string }) {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    let startTimestamp: number | null = null
+    let animationFrameId: number
+
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp
+      const elapsed = timestamp - startTimestamp
+      const progress = Math.min(elapsed / duration, 1)
+      
+      const easeOutQuad = (t: number) => t * (2 - t)
+      const current = easeOutQuad(progress) * value
+      setCount(current)
+
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(step)
+      }
+    }
+
+    animationFrameId = requestAnimationFrame(step)
+    return () => cancelAnimationFrame(animationFrameId)
+  }, [value, duration])
+
+  return <>{count.toFixed(decimals)}{suffix}</>
+}
 
 export function StatsBar() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 })
@@ -36,10 +64,9 @@ export function StatsBar() {
                 style={{ fontFamily: 'var(--font-display)' }}
               >
                 {inView && !stat.noAnimate ? (
-                  <CountUp
-                    end={stat.value}
+                  <AnimatedNumber
+                    value={stat.value}
                     decimals={stat.decimals || 0}
-                    duration={2}
                     suffix={stat.suffix}
                   />
                 ) : stat.noAnimate ? (
