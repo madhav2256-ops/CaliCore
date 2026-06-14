@@ -58,18 +58,19 @@ To ensure premium visual aesthetics, all styling must strictly conform to these 
 ---
 
 ## 3. CONTACT & LOCATION DATA
-* **Address:** 86, 60FT Main Road, Vishwas Nagar, Shahdara, Delhi-110032, India
-* **Google Maps Embed:** `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1972.7798238042335!2d77.29279629468125!3d28.66746058228687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd3116899eb5e318a!2sPERMAFLY!5e0!3m2!1sen!2sin!4v1605437448842!5m2!1sen!2sin`
-* **Google Maps Directions Route Link:** `https://maps.google.com/?daddr=PERMAFLY,Vishwas+Nagar,Shahdara,Delhi`
+* **Address:** `[Enter CaliCore Academy Street Address]`
+* **Google Maps Embed:** `[Enter Google Maps Embed URL]`
+* **Google Maps Directions Route Link:** `[Enter Google Maps Directions URL]`
 * **Phone Numbers:**
-  * Primary: `+91 948-599-3322`
-  * Landline: `+91 11 4725-3322`
+  * Primary: `[Enter CaliCore Primary Phone Number]`
+  * Landline: `[Enter CaliCore Landline Number]`
 * **Official Emails:**
   * General Info: `info@calicore.in`
   * Member Support: `support@calicore.in`
 * **Working Hours:**
-  * Monday – Saturday: `06:00 – 22:00` (Continuous batches)
+  * Monday – Saturday: `06:00 – 22:00` (Or custom operating hours)
   * Sunday: `CLOSED`
+
 
 ---
 
