@@ -188,7 +188,8 @@ export function FinalCTA() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-text-secondary text-center text-sm md:text-base mb-12 max-w-2xl mx-auto leading-relaxed"
+          className="text-text-secondary text-center text-sm md:text-base mb-12 max-w-md mx-auto leading-relaxed"
+          style={{ textAlign: 'center' }}
         >
           Limited training slots. Special launch offer for the first 50 members — 15% OFF + FREE Official T-Shirt & Shaker Cup! Forge your discipline. Start your bodyweight mastery journey today.
         </motion.p>
