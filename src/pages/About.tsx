@@ -1,289 +1,378 @@
 import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
 import { SEO } from '@/lib/seo'
-import { SectionLabel } from '@/components/ui/SectionLabel'
 import { PageTransition } from '@/components/layout/PageTransition'
-import { team } from '@/data/team'
 import { LazyImage } from '@/components/ui/LazyImage'
-import { useActiveOnScroll } from '@/hooks/useActiveOnScroll'
-import { Dumbbell, Star, Heart } from 'lucide-react'
+import { siteConfig } from '@/data/siteConfig'
+import { ArrowDown, ArrowRight } from 'lucide-react'
 
 export default function About() {
-  const activePillarIds = useActiveOnScroll('.about-pillar-card')
-  const activeCoachIds = useActiveOnScroll('.about-coach-card')
-
-  const { ref: headerRef, inView: headerInView } = useInView({ triggerOnce: true, threshold: 0.15 })
-  const { ref: storyRef, inView: storyInView } = useInView({ triggerOnce: true, threshold: 0.15 })
-  const { ref: missionRef, inView: missionInView } = useInView({ triggerOnce: true, threshold: 0.15 })
-  const { ref: coachesRef, inView: coachesInView } = useInView({ triggerOnce: true, threshold: 0.15 })
-
-  const cardHover: any = {
-    scale: 1.02,
-    borderColor: 'rgba(255, 77, 28, 0.25)',
-    boxShadow: '0 10px 30px -10px rgba(255, 77, 28, 0.15)',
-    transition: { duration: 0.3, ease: 'easeOut' }
+  const revealVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }
+    }
   }
 
-  const storySteps = [
-    {
-      phase: '01 / THE SPARK',
-      title: 'Bodyweight Over Machines',
-      desc: 'The vision was born to create a technical movement academy in Laxmi Nagar — stripping away heavy equipment to build real, raw athletic capability using only gravity and bodyweight.'
-    },
-    {
-      phase: '02 / THE FORGE',
-      title: 'Fire & Steel Buildout',
-      desc: 'We transformed an industrial space near Bal Bhavan School in Mangal Bazar. With raw steel rigs, gymnastic rings, and our signature fire-and-anatomical mural, the forge took shape.'
-    },
-    {
-      phase: '03 / THE LAUNCH',
-      title: 'April 2026 Opening',
-      desc: 'Opening our doors with a commitment to build a motivating, beginner-friendly community batch. A space where beginners build strength and advanced athletes master holds.'
+  const staggerContainer = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15
+      }
     }
-  ]
+  }
 
   return (
     <PageTransition>
       <SEO
-        title="Our Story | CaliCore Academy — Laxmi Nagar Delhi"
-        description="Learn about CaliCore Academy's machine-free training philosophy, our story so far from vision to our April 2026 launch in Laxmi Nagar, and meet our coaching staff led by Abdul Sir."
+        title="Our Story & Philosophy | CaliCore Academy"
+        description="Discover how CaliCore Academy returned to raw bodyweight sovereignty in Laxmi Nagar, Delhi. Meet founder Head Coach Abdul Sir and explore our machine-free philosophy."
         url="/about"
       />
 
-      <main id="main-content" className="bg-bg-primary overflow-hidden">
-        {/* Header Hero */}
-        <section ref={headerRef} className="relative h-[65vh] flex flex-col justify-center items-center text-center px-4 pt-20">
+      <main id="main-content" className="bg-[#0D0D0D] text-[#F5F2EC] font-sans relative overflow-x-hidden selection:bg-[#FF4D1C] selection:text-[#0D0D0D] pb-32">
+        {/* Custom CSS overrides for Stitch Typography & Layout */}
+        <style dangerouslySetInnerHTML={{ __html: `
+          .text-hero {
+            font-family: 'Bebas Neue', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.04em;
+            line-height: 0.85;
+          }
+          .text-h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            line-height: 1;
+          }
+          .text-label {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+          }
+          .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 40;
+            opacity: 0.02;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+          }
+          .text-glow-ember {
+            text-shadow: 0 0 20px rgba(255, 77, 28, 0.5), 0 0 40px rgba(255, 77, 28, 0.2);
+          }
+        `}} />
+
+        {/* Gritty Texture Overlay */}
+        <div className="noise-overlay"></div>
+
+        {/* Ambient background glows */}
+        <div className="absolute top-[15%] left-[-10%] w-[60%] aspect-square bg-[radial-gradient(circle,rgba(255,77,28,0.04)_0%,transparent_70%)] pointer-events-none z-0" />
+        <div className="absolute top-[50%] right-[-10%] w-[50%] aspect-square bg-[radial-gradient(circle,rgba(244,166,35,0.03)_0%,transparent_70%)] pointer-events-none z-0" />
+
+        {/* 1. Hero Section */}
+        <section className="relative min-h-[90vh] flex flex-col justify-end pb-24 pt-32 px-6 md:px-12 lg:px-24 border-b border-[#2E2E30]">
           <div className="absolute inset-0 z-0">
             <LazyImage
-              src="https://images.unsplash.com/photo-1598971639058-fab3c3109a00?q=80&w=1200&auto=format&fit=crop"
-              alt="Calisthenics bar training"
+              src="https://lh3.googleusercontent.com/aida/AP1WRLvg6agQnvGHWsC0_ki-rnGIbsHrQiJaTDAmVja3jOrzLXDNZfQ9P38wiK0y9JwucEuIBbsYhG3ozP26dzJc49ojeN0L7gI4V4cCyEN0x9I6-RAMXnMco_C340fXTqOGERsTUiS7jMlACN0eOJG88BqvPBh6PFt4huuxsGdC2XwlUvm_wLhUc1Vf1HeLTUxhvspNhw8O6AMnDpWUPaoHp9Nmoq6zRa9KqFbDmRBpAL6cLqLt3YN15A1xpho"
+              alt="Gritty cinematic gym interior in Delhi"
               priority={true}
-              className="w-full h-full object-cover opacity-20 grayscale"
+              className="w-full h-full object-cover object-center opacity-40 grayscale contrast-125"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/40 to-bg-primary" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-[#0D0D0D]/60 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0D0D0D]/90 to-transparent"></div>
           </div>
 
-          <div className="relative z-10 max-w-4xl mx-auto space-y-4">
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={headerInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}
-            >
-              <SectionLabel className="justify-center">About Us</SectionLabel>
-            </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="max-w-7xl relative z-10 w-full"
+          >
+            <motion.span variants={revealVariants} className="text-label text-[#F4A623] text-xs md:text-sm mb-6 block flex items-center gap-2">
+              <span className="w-8 h-px bg-[#F4A623]"></span>
+              ESTABLISHED IN DELHI
+            </motion.span>
             
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={headerInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="font-display font-black text-5xl sm:text-7xl leading-[0.95] tracking-tighter text-text-primary uppercase"
-              style={{ fontFamily: 'var(--font-display)' }}
+              variants={revealVariants}
+              className="text-hero text-6xl md:text-8xl lg:text-[120px] text-[#F5F2EC] mb-6 drop-shadow-2xl"
             >
-              FORGED IN <br />
-              <span className="text-accent orange-glow">FIRE & STEEL</span>
+              FORGED IN <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4D1C] to-[#B8291E] text-glow-ember font-black">FIRE</span><br />
+              &amp; STEEL
             </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={headerInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="max-w-2xl mx-auto text-sm md:text-base text-text-secondary leading-relaxed pt-2"
-            >
-              CaliCore is Laxmi Nagar's dedicated home for calisthenics, gymnastics, and combat training. We believe in bodyweight sovereignty — unlocking capability without mechanical shortcuts.
-            </motion.p>
-          </div>
-        </section>
-
-        {/* Our Story So Far Narrative */}
-        <section ref={storyRef} className="py-20 bg-bg-surface border-t border-white/5 relative">
-          <div className="container-site relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12">
             
-            {/* Left Sticky Header */}
-            <div className="lg:col-span-4 flex flex-col justify-start lg:sticky lg:top-28 h-fit">
-              <SectionLabel>Our Story</SectionLabel>
-              <h2 className="mt-4 font-display font-black text-3xl md:text-4xl uppercase tracking-tight text-text-primary leading-none" style={{ fontFamily: 'var(--font-display)' }}>
-                THE FORGE <br />
-                <span className="text-accent">SO FAR</span>
-              </h2>
-              <p className="mt-4 text-text-secondary text-xs md:text-sm leading-relaxed">
-                A brief overview of how we conceptualized, built, and launched CaliCore Academy as Laxmi Nagar's premier movement laboratory.
-              </p>
-            </div>
-
-            {/* Right Story narrative cards */}
-            <div className="lg:col-span-8 space-y-12">
-              {storySteps.map((step, idx) => (
-                <motion.div
-                  key={step.phase}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={storyInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.6, delay: idx * 0.15 }}
-                  className="relative pl-8 border-l border-white/10 group hover:border-accent/30 transition-colors duration-300"
-                >
-                  <div className="absolute left-[-5px] top-1.5 w-[9px] h-[9px] rounded-full bg-bg-surface border-2 border-white/20 group-hover:border-accent group-hover:bg-accent transition-all duration-300" />
-                  
-                  <span className="font-mono text-[10px] text-accent font-bold tracking-widest block uppercase mb-1">
-                    {step.phase}
-                  </span>
-                  <h3 className="font-display font-bold text-lg text-text-primary uppercase tracking-tight mb-2" style={{ fontFamily: 'var(--font-display)' }}>
-                    {step.title}
-                  </h3>
-                  <p className="text-text-secondary text-xs md:text-sm leading-relaxed">
-                    {step.desc}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-
-          </div>
+            <motion.p
+              variants={revealVariants}
+              className="font-body text-[#8C8C8C] text-lg md:text-xl max-w-2xl leading-relaxed mb-10"
+            >
+              We strip away the artificial. We reject the machine. At CaliCore Academy, your body is the only equipment you need to forge true strength, resilience, and discipline.
+            </motion.p>
+            
+            <motion.div variants={revealVariants}>
+              <a className="group inline-flex items-center gap-3 text-label text-[#F5F2EC] hover:text-[#FF4D1C] transition-colors" href="#story">
+                SCROLL TO DISCOVER
+                <ArrowDown className="text-[#FF4D1C] group-hover:translate-y-1 transition-transform" />
+              </a>
+            </motion.div>
+          </motion.div>
         </section>
 
-        {/* Machine-Free Philosophy Cards */}
-        <section ref={missionRef} className="py-20 bg-bg-primary border-t border-white/5 relative">
-          <div className="container-site">
+        {/* 2. Origin Story / The Forge So Far */}
+        <section id="story" className="relative py-32 px-6 md:px-12 lg:px-24">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 md:gap-24 items-center">
+            
+            {/* Image Side */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={missionInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8 }}
-              className="text-center mb-16 space-y-4"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-50px' }}
+              variants={revealVariants}
+              className="w-full md:w-5/12"
             >
-              <SectionLabel className="justify-center">Core Pillars</SectionLabel>
-              <h2 className="font-display font-black text-4xl md:text-5xl text-text-primary uppercase tracking-tight" style={{ fontFamily: 'var(--font-display)' }}>
-                WHY MACHINE-FREE?
-              </h2>
+              <div className="relative group">
+                <div className="absolute -inset-4 border border-[#2E2E30]/50 translate-x-4 translate-y-4 z-0 transition-transform group-hover:translate-x-2 group-hover:translate-y-2 duration-500 rounded-sm"></div>
+                <LazyImage
+                  src="https://lh3.googleusercontent.com/aida/AP1WRLszpRWLHADx9oktd_9k_BGjttvbgYPqXX2huCTv7Ayh2B7FO_71NZUgRooUK72cG0sDXd1p8HEF6-GXKCp1KFRX4LtajaS-IIRl1GKpmSD3bzz29I6f4f98EgqU-EfjtCe8nd38inQ--QUQMU97RuTS0Ty0ssZR0uWe8XjKoTvJ8Q1Qbx-0iWAnkOZyCfD3RSu8S-17Z7cSoc6RvuUeHKigq94-G1Qd-npUKX_59GcxBhLX5KlBhaSLiMU"
+                  alt="Industrial calisthenics equipment against a dark concrete wall"
+                  width={1280}
+                  height={720}
+                  className="relative z-10 w-full h-[500px] object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl border border-[#2E2E30]"
+                />
+                <div className="absolute bottom-6 left-6 z-20 bg-[#0D0D0D]/90 backdrop-blur border border-[#2E2E30] p-4 rounded-sm shadow-xl flex items-center gap-4">
+                  <img
+                    alt="CaliCore Mark"
+                    className="w-8 h-8 object-contain"
+                    src={siteConfig.logo}
+                  />
+                  <span className="text-h2 text-xl md:text-2xl text-[#F5F2EC]">EST. 2018</span>
+                </div>
+              </div>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-              {[
-                { id: 'p1', stat: '0%', title: 'Machines', desc: 'No mechanical belts. No mechanical weight stacks. We use raw gravity and dynamic holds to build real athletic strength.', icon: Dumbbell },
-                { id: 'p2', stat: '5.0★', title: 'Google Rating', desc: 'A motivating, highly supportive community built from reviews highlighting beginner-friendly progression.', icon: Star },
-                { id: 'p3', stat: '100%', title: 'Human Effort', desc: 'Every program is skill-based. You earn your capabilities through structured bodyweight coordination and discipline.', icon: Heart }
-              ].map((pillar, idx) => {
-                const isActive = activePillarIds.includes(pillar.id)
-                const Icon = pillar.icon
-                return (
-                  <motion.div
-                    key={pillar.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={missionInView ? { opacity: 1, y: 0 } : {}}
-                    whileHover={cardHover}
-                    transition={{ duration: 0.6, delay: idx * 0.1 }}
-                    className={`glass p-6 md:p-8 rounded-2xl border text-center flex flex-col items-center group relative overflow-hidden about-pillar-card ${
-                      isActive ? 'border-accent/30 bg-white/[0.01]' : 'border-white/5 hover:border-accent/20'
-                    }`}
-                    data-id={pillar.id}
-                  >
-                    <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-accent/10 text-accent mb-4">
-                      <Icon size={18} />
-                    </div>
-                    <span className="font-display font-black text-4xl text-accent block" style={{ fontFamily: 'var(--font-display)' }}>
-                      {pillar.stat}
-                    </span>
-                    <h3 className="font-mono text-xs uppercase tracking-wider text-text-primary mt-2 font-bold">
-                      {pillar.title}
-                    </h3>
-                    <p className="text-text-secondary text-xs mt-3 leading-relaxed">
-                      {pillar.desc}
-                    </p>
-                  </motion.div>
-                )
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Founder's Manifesto Quote block */}
-        <section className="py-20 bg-bg-surface border-t border-white/5 relative">
-          <div className="container-site max-w-4xl text-center">
-            <div className="relative">
-              <span className="absolute -top-10 left-1/2 -translate-x-1/2 font-serif text-8xl text-accent/5 select-none pointer-events-none">“</span>
-              <p className="font-serif italic text-lg md:text-2xl text-text-secondary leading-relaxed relative z-10">
-                "We don't rely on machines to build power. Our academy is a forge where discipline is hammered out. Whether you're a child learning their first flip, a woman in our dedicated batches, or an advanced calisthenics athlete, we build natural capabilities from the ground up."
-              </p>
-              <div className="flex items-center justify-center gap-4 pt-6">
-                <div className="h-[1px] w-8 bg-accent" />
-                <span className="font-mono text-xs text-text-primary uppercase tracking-widest font-bold">
-                  CALICORE ACADEMY MANIFESTO
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* The Coaching Force (Abdul Sir & Placeholders) */}
-        <section ref={coachesRef} className="py-20 bg-bg-primary border-t border-white/5 relative">
-          <div className="container-site">
-            <div className="mb-12 space-y-4">
-              <SectionLabel>Coaching Staff</SectionLabel>
-              <h2 className="font-display font-black text-3xl md:text-4xl text-text-primary uppercase tracking-tight mt-4" style={{ fontFamily: 'var(--font-display)' }}>
-                THE <span className="text-accent">INSTRUCTORS</span>
+            {/* Text Side */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-50px' }}
+              variants={revealVariants}
+              className="w-full md:w-7/12 space-y-6"
+            >
+              <span className="text-label text-[#8C8C8C] text-sm block">| THE FORGE SO FAR</span>
+              <h2 className="text-h2 text-5xl md:text-6xl text-[#F5F2EC] leading-none">
+                BORN FROM THE <span className="text-[#FF4D1C] text-glow-ember">CONCRETE</span>
               </h2>
-              <p className="text-text-secondary text-xs md:text-sm">
-                Certified movement professionals dedicated to safely scaling your physical coordination.
-              </p>
-            </div>
+              <div className="space-y-6 text-[#8C8C8C] text-lg font-body leading-relaxed border-l border-[#2E2E30]/30 pl-6">
+                <p>
+                  What started as a small group of dedicated athletes training in a Delhi park has evolved into a sanctuary for movement mastery. We didn't want mirrors. We didn't want air conditioning. We wanted resistance.
+                </p>
+                <p>
+                  Our Laxmi Nagar academy was built with raw determination and grit. Every pull-up bar, every parallel bar carries the sweat of our founding practitioners. It is a space designed not for comfort, but for transformation.
+                </p>
+                <p className="text-[#F5F2EC] font-semibold">
+                  We are more than a gym. We are a crucible where willpower is tested and true athletes are forged.
+                </p>
+              </div>
+            </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-              {team.map((member, idx) => {
-                const isActive = activeCoachIds.includes(member.id)
-                return (
-                  <motion.div
-                    key={member.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={coachesInView ? { opacity: 1, y: 0 } : {}}
-                    whileHover={cardHover}
-                    transition={{ duration: 0.6, delay: idx * 0.1 }}
-                    className={`glass rounded-2xl overflow-hidden border transition-all duration-300 relative group flex flex-col h-full about-coach-card ${
-                      isActive ? 'border-accent/20 bg-white/[0.01]' : 'border-white/5 hover:border-accent/20'
-                    }`}
-                    data-id={member.id}
-                  >
-                    {member.image && (
-                      <div className="aspect-[4/3] relative overflow-hidden bg-bg-elevated">
-                        <LazyImage
-                          src={member.image}
-                          alt={member.name}
-                          width={400}
-                          height={300}
-                          className={`w-full h-full object-cover grayscale transition-transform duration-500 ${
-                            isActive ? 'scale-102 grayscale-0' : 'grayscale group-hover:scale-102 group-hover:grayscale-0'
-                          }`}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/90 to-transparent opacity-60" />
-                        <div className="absolute bottom-4 left-4">
-                          <span className="bg-accent text-white text-[9px] font-mono font-bold px-2.5 py-1 rounded uppercase tracking-wider">
-                            {member.role}
-                          </span>
-                        </div>
-                      </div>
-                    )}
-
-                    <div className="p-6 flex flex-col justify-between flex-grow">
-                      <div>
-                        <h3 className={`font-display font-bold text-lg transition-colors duration-300 ${
-                          isActive ? 'text-accent' : 'text-text-primary group-hover:text-accent'
-                        }`} style={{ fontFamily: 'var(--font-display)' }}>
-                          {member.name}
-                        </h3>
-                        {member.specialty && (
-                          <div className="flex items-center gap-2 mt-1">
-                            <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-                            <span className="font-mono text-[10px] text-text-secondary uppercase tracking-wider">
-                              {member.specialty}
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                      <p className="text-xs text-text-secondary leading-relaxed mt-4">
-                        {member.bio}
-                      </p>
-                    </div>
-                  </motion.div>
-                )
-              })}
-            </div>
           </div>
         </section>
+
+        {/* 3. Philosophy Milestones */}
+        <section className="relative py-32 bg-[#1A1A1D] border-y border-[#2E2E30]/50">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 relative z-10">
+            
+            <div className="text-center mb-20">
+              <span className="text-label text-[#FF4D1C] text-sm block mb-4">| PHILOSOPHY</span>
+              <h2 className="text-h2 text-5xl md:text-7xl text-[#F5F2EC] leading-none">
+                WHY <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4D1C] to-[#B8291E] text-glow-ember">MACHINE-FREE?</span>
+              </h2>
+            </div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-50px' }}
+              variants={staggerContainer}
+              className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-b border-[#2E2E30]/30 py-12"
+            >
+              {/* Milestone 1 */}
+              <motion.div variants={revealVariants} className="text-center">
+                <div className="text-hero text-7xl md:text-9xl text-[#F4A623] mb-4 opacity-90 leading-none">0%</div>
+                <h3 className="text-label text-[#F5F2EC] text-xl mb-4 tracking-widest">MACHINES</h3>
+                <p className="text-[#8C8C8C] font-body text-sm md:text-base px-4 leading-relaxed">
+                  Isolating muscles on a padded seat builds illusion, not capability. We teach you to move your body through space, engaging every stabilizing muscle group.
+                </p>
+              </motion.div>
+              
+              {/* Milestone 2 */}
+              <motion.div variants={revealVariants} className="text-center border-y md:border-y-0 md:border-x border-[#2E2E30]/30 py-12 md:py-0">
+                <div className="text-hero text-7xl md:text-9xl text-[#FF4D1C] mb-4 opacity-90 flex justify-center items-baseline leading-none">
+                  5.0<span className="text-5xl ml-2 font-bold">★</span>
+                </div>
+                <h3 className="text-label text-[#F5F2EC] text-xl mb-4 tracking-widest">GOOGLE RATING</h3>
+                <p className="text-[#8C8C8C] font-body text-sm md:text-base px-4 leading-relaxed">
+                  Tested and proven by hundreds of athletes in Delhi. A community forged in mutual effort and shared movement progression.
+                </p>
+              </motion.div>
+              
+              {/* Milestone 3 */}
+              <motion.div variants={revealVariants} className="text-center">
+                <div className="text-hero text-7xl md:text-9xl text-[#F5F2EC] mb-4 opacity-80 leading-none">100%</div>
+                <h3 className="text-label text-[#F5F2EC] text-xl mb-4 tracking-widest">HUMAN EFFORT</h3>
+                <p className="text-[#8C8C8C] font-body text-sm md:text-base px-4 leading-relaxed">
+                  No shortcuts. No assistance. Just gravity, leverage, and sheer force of will. The ultimate test of human movement mechanics.
+                </p>
+              </motion.div>
+            </motion.div>
+
+          </div>
+        </section>
+
+        {/* 4. Coaches Timeline Narrative */}
+        <section className="relative py-32 px-6 md:px-12 lg:px-24 bg-[#0D0D0D]">
+          <div className="max-w-5xl mx-auto">
+            
+            <div className="text-left mb-20">
+              <span className="text-label text-[#8C8C8C] text-sm block mb-4">| LEADERSHIP</span>
+              <h2 className="text-h2 text-5xl md:text-6xl text-[#F5F2EC] leading-none">
+                THE <span className="text-[#F4A623]">MASTERS</span> OF MOVEMENT
+              </h2>
+            </div>
+
+            {/* Continuous Timeline Flow */}
+            <div className="relative pl-8 md:pl-0">
+              {/* Timeline Line (Desktop Center, Mobile Left) */}
+              <div className="absolute left-[31px] md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#FF4D1C] via-[#2E2E30] to-transparent -translate-x-1/2"></div>
+
+              {/* Coach 1: Head Coach Abdul Sir */}
+              <div className="relative flex flex-col md:flex-row items-center justify-between mb-24 w-full">
+                {/* Node */}
+                <div className="absolute left-0 md:left-1/2 w-4 h-4 rounded-sm bg-[#FF4D1C] border-4 border-[#0D0D0D] -translate-x-1/2 mt-6 md:mt-0 z-10 shadow-[0_0_15px_rgba(255,77,28,0.5)]"></div>
+                
+                {/* Content Left */}
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: '-50px' }}
+                  variants={revealVariants}
+                  className="w-full md:w-5/12 pl-8 md:pl-0 md:text-right md:pr-12"
+                >
+                  <h3 className="text-h2 text-3xl text-[#F5F2EC] mb-2">ABDUL SIR</h3>
+                  <h4 className="text-label text-[#FF4D1C] text-sm mb-4">HEAD COACH &amp; FOUNDER</h4>
+                  <p className="font-body text-[#8C8C8C] text-sm md:text-base leading-relaxed">
+                    A pioneer of street calisthenics in India. Abdul forged his strength on raw bars before formalizing his methods. His coaching philosophy centers on brutal basics and uncompromising form.
+                  </p>
+                </motion.div>
+                
+                {/* Spacer */}
+                <div className="hidden md:block w-2/12"></div>
+                
+                {/* Image Right */}
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: '-50px' }}
+                  variants={revealVariants}
+                  className="w-full md:w-5/12 pl-8 md:pl-0 mt-8 md:mt-0"
+                >
+                  <div className="aspect-square bg-[#1A1A1D] border border-[#2E2E30] p-2 rounded-sm grayscale hover:grayscale-0 transition duration-500">
+                    <LazyImage
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeZ3tErmoW_-WCVMQtdwIGFgj1K2hYIGQ4Dl-Af2uYO7sTlxERWDiwY1BdjowGAbMu2uST1RUs8Yv-QG-nvd5EBi5euy_byAt3mz1oW6d7RpKjVQrEDwndBUGJmH6XPUUSKB6Y2pd-heqhvSg4BwLYLARaS8Xr46MghQFJTHDNkpRy_95jrM9oWOzYCh71e_FpRzK3bJaL8k4ru-zsghd14AOQK_355TZs8fsTCL_nyV8Qu8HVbqTF0-d3YrAzqQAgL00KpYxOBfU"
+                      alt="Head Coach Abdul Sir"
+                      width={400}
+                      height={400}
+                      className="w-full h-full object-cover rounded-sm border border-[#2E2E30]"
+                    />
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Coach 2: Visiting Coaches */}
+              <div className="relative flex flex-col md:flex-row-reverse items-center justify-between w-full">
+                {/* Node */}
+                <div className="absolute left-0 md:left-1/2 w-4 h-4 rounded-sm bg-[#2E2E30] border-4 border-[#0D0D0D] -translate-x-1/2 mt-6 md:mt-0 z-10"></div>
+                
+                {/* Content Right */}
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: '-50px' }}
+                  variants={revealVariants}
+                  className="w-full md:w-5/12 pl-8 md:pl-0 md:pl-12"
+                >
+                  <h3 className="text-h2 text-3xl text-[#F5F2EC] mb-2">THE BROTHERHOOD</h3>
+                  <h4 className="text-label text-[#F4A623] text-sm mb-4">VISITING MASTERS</h4>
+                  <p className="font-body text-[#8C8C8C] text-sm md:text-base leading-relaxed">
+                    CaliCore regularly hosts street workout specialists and gymnastics experts. We believe in constantly evolving our methodology by learning from the best practitioners globally.
+                  </p>
+                </motion.div>
+                
+                {/* Spacer */}
+                <div className="hidden md:block w-2/12"></div>
+                
+                {/* Image Left */}
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: '-50px' }}
+                  variants={revealVariants}
+                  className="w-full md:w-5/12 pl-8 md:pl-0 mt-8 md:mt-0"
+                >
+                  <div className="aspect-[4/3] bg-[#1A1A1D] border border-[#2E2E30] p-2 rounded-sm grayscale hover:grayscale-0 transition duration-500">
+                    <LazyImage
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr0_ccPYla-btdF9_YCmoJ0Yg43IKZ5NINyJ8fqgRtp1lfwZr_ITSE_j0dUGDyWX5eceXHFOUq_DuH25Hf8Et752HB5O2HinqxKz1T-Ib-r2tMQi1IAy0l1GPnGSGs3EfWAskDYja_YEhS8SlGt51XgKc80Zr1Lw2KT8hvG6GLYchodXBBjR-6iN3EmD0lCFx3-aoF_FsYOt3KNcYrdo4-7spUC7NCioHZLN78twFLYv4YOp3mOE7Bj5976jo04VAl9idecWjRx8M"
+                      alt="CaliCore training rig team"
+                      width={400}
+                      height={300}
+                      className="w-full h-full object-cover rounded-sm border border-[#2E2E30]"
+                    />
+                  </div>
+                </motion.div>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        {/* 5. Brand Creed / Final CTA */}
+        <section className="relative py-40 flex items-center justify-center text-center px-6 border-t border-[#2E2E30]/30 overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-64 bg-[#FF4D1C]/10 blur-[100px] rounded-full pointer-events-none"></div>
+          
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={revealVariants}
+            className="relative z-10 max-w-4xl"
+          >
+            <img
+              alt="CaliCore Shield"
+              className="w-16 h-16 object-contain mx-auto mb-8 opacity-80"
+              src={siteConfig.logo}
+            />
+            
+            <h2 className="text-hero text-6xl md:text-8xl lg:text-9xl text-[#F5F2EC] mb-10 leading-none">
+              WE DON'T USE MACHINES.<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4D1C] to-[#B8291E] text-glow-ember font-black">WE BECOME THEM.</span>
+            </h2>
+            
+            <a
+              className="inline-flex items-center gap-3 font-label text-xl tracking-widest bg-[#FF4D1C] text-[#0D0D0D] px-10 py-5 rounded-sm hover:bg-[#F5F2EC] hover:text-[#0D0D0D] transition-all duration-300 transform hover:scale-105 group font-bold shadow-[0_0_20px_rgba(255,77,28,0.3)]"
+              href={siteConfig.socials.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              JOIN THE FORGE
+              <ArrowRight className="transition-transform group-hover:translate-x-1" />
+            </a>
+          </motion.div>
+        </section>
+
       </main>
     </PageTransition>
   )

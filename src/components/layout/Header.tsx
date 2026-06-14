@@ -115,19 +115,19 @@ export function Header() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            initial={{ x: '100%', opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: '100%', opacity: 0 }}
+            transition={{ type: 'spring', damping: 28, stiffness: 220 }}
             className="fixed inset-0 z-48 bg-bg-primary/98 backdrop-blur-xl md:hidden"
           >
             <nav className="flex flex-col items-center justify-center h-full gap-6" aria-label="Mobile navigation">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.path}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.08, duration: 0.3 }}
+                  initial={{ opacity: 0, x: 35 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.06 + 0.15, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <Link
                     to={link.path}
@@ -145,9 +145,9 @@ export function Header() {
                 </motion.div>
               ))}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: navLinks.length * 0.08, duration: 0.3 }}
+                initial={{ opacity: 0, x: 35 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navLinks.length * 0.06 + 0.15, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               >
                 <a
                   href={siteConfig.socials.whatsapp}

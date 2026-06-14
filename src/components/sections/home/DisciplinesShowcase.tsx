@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { LazyImage } from '@/components/ui/LazyImage'
 import { disciplines } from '@/data/disciplines'
+import { siteConfig } from '@/data/siteConfig'
 import { useActiveOnScroll } from '@/hooks/useActiveOnScroll'
 
 export function DisciplinesShowcase() {
@@ -21,7 +22,7 @@ export function DisciplinesShowcase() {
   }
 
   return (
-    <section className="py-[var(--section-py)] bg-bg-surface border-b border-white/5 relative overflow-hidden">
+    <section className="py-[var(--section-py)] bg-bg-primary border-b border-white/5 relative overflow-hidden">
       <div className="container-site">
         
         {/* Title Section */}
@@ -164,33 +165,36 @@ export function DisciplinesShowcase() {
             className="col-span-2"
           >
             <a
-              href="https://wa.me/918076241590"
+              href={siteConfig.socials.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
               className="group block cursor-pointer h-full relative"
             >
-              <div className="h-full flex flex-col justify-between rounded-xl bg-accent p-6 md:p-8 text-white relative overflow-hidden transition-all duration-300 min-h-[220px] lg:min-h-0 hover:shadow-[0_10px_35px_rgba(255,77,28,0.3)]">
-                {/* Diagonal lines pattern overlay */}
-                <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(0,0,0,0.05)_25%,transparent_25%,transparent_50%,rgba(0,0,0,0.05)_50%,rgba(0,0,0,0.05)_75%,transparent_75%,transparent)] bg-[length:30px_30px] opacity-15 pointer-events-none" />
+              <div className="h-full flex flex-col justify-between rounded-xl bg-bg-surface border border-accent-gold/20 p-6 md:p-8 text-text-primary relative overflow-hidden transition-all duration-300 min-h-[220px] lg:min-h-0 hover:border-accent-gold/50 hover:shadow-[0_10px_35px_rgba(244,166,35,0.12)] hover:scale-[1.015]">
+                {/* Diagonal lines pattern overlay in subtle gold */}
+                <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(244,166,35,0.02)_25%,transparent_25%,transparent_50%,rgba(244,166,35,0.02)_50%,rgba(244,166,35,0.02)_75%,transparent_75%,transparent)] bg-[length:30px_30px] opacity-20 pointer-events-none" />
 
                 <div className="relative z-10">
-                  <div className="font-mono text-[9px] md:text-[10px] tracking-[0.2em] text-white/80 uppercase mb-3 font-bold">
+                  <div className="font-mono text-[9px] md:text-[10px] tracking-[0.2em] text-accent-gold uppercase mb-3 font-bold">
                     08 / LAUNCH PROMOTION
                   </div>
-                  <h3 className="font-display font-black text-2xl md:text-3xl uppercase leading-[1.1] tracking-tight text-white mb-2" style={{ fontFamily: 'var(--font-display)' }}>
+                  <h3 className="font-display font-black text-2xl md:text-3xl uppercase leading-[1.1] tracking-tight text-text-primary mb-2 transition-colors group-hover:text-accent-gold" style={{ fontFamily: 'var(--font-display)' }}>
                     START TRAINING TODAY
                   </h3>
-                  <p className="text-xs text-white/95 leading-relaxed max-w-sm">
-                    Book your free trial batch session. Get a special 15% discount for the first 50 members + FREE Official T-Shirt & Shaker Cup! Delhi's premier movement forge is waiting.
+                  <p className="text-xs text-text-secondary leading-relaxed max-w-sm">
+                    Book your free trial batch session. Get a special 15% discount for the first 50 members + a FREE Welcome Kit! Delhi's premier movement forge is waiting.
                   </p>
                 </div>
 
-                <div className="relative z-10 mt-6 flex items-center gap-3 font-display font-bold text-xs tracking-widest uppercase text-white" style={{ fontFamily: 'var(--font-label)' }}>
+                <div className="relative z-10 mt-6 flex items-center gap-3 font-display font-bold text-xs tracking-widest uppercase text-accent-gold transition-colors duration-300" style={{ fontFamily: 'var(--font-label)' }}>
                   <span>CLAIM FREE TRIAL NOW</span>
-                  <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center transition-colors group-hover:bg-white group-hover:text-accent">
-                    <ArrowRight size={14} />
+                  <div className="w-7 h-7 rounded-full bg-accent-gold/10 border border-accent-gold/20 flex items-center justify-center transition-all duration-300 group-hover:bg-accent-gold group-hover:text-bg-primary group-hover:scale-105 group-hover:shadow-[0_0_15px_rgba(244,166,35,0.4)]">
+                    <ArrowRight size={14} className="text-accent-gold group-hover:text-bg-primary" />
                   </div>
                 </div>
+
+                {/* Bottom accent bar on hover */}
+                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent-gold transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100" />
               </div>
             </a>
           </motion.div>

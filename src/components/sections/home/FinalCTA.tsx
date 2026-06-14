@@ -107,7 +107,7 @@ export function FinalCTA() {
   }, [])
 
   return (
-    <section ref={ref} className="py-24 md:py-36 bg-bg-surface relative overflow-hidden border-t border-white/5 flex items-center justify-center">
+    <section ref={ref} className="py-16 md:py-20 bg-bg-surface relative overflow-hidden border-t border-white/5 flex items-center justify-center">
       {/* Styles local to FinalCTA for clean animations */}
       <style dangerouslySetInnerHTML={{ __html: `
         .cta-fiery-title {
@@ -176,7 +176,7 @@ export function FinalCTA() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2
-            className="mb-6 tracking-tighter uppercase font-black"
+            className="mb-4 tracking-tighter uppercase font-black"
             style={{ fontSize: 'clamp(2.5rem, 7vw, 5rem)', fontFamily: 'var(--font-display)', lineHeight: 'none' }}
           >
             READY TO <span className="text-accent cta-fiery-title">RISE?</span>
@@ -184,15 +184,17 @@ export function FinalCTA() {
         </motion.div>
 
         {/* Tagline details */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-text-secondary text-center text-sm md:text-base mb-12 max-w-md mx-auto leading-relaxed"
-          style={{ textAlign: 'center' }}
-        >
-          Limited training slots. Special launch offer for the first 50 members — 15% OFF + FREE Official T-Shirt & Shaker Cup! Forge your discipline. Start your bodyweight mastery journey today.
-        </motion.p>
+        <div className="flex justify-center w-full mb-8">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="text-text-secondary text-center text-sm md:text-base max-w-md leading-relaxed"
+            style={{ textAlign: 'center' }}
+          >
+            Limited training slots. Special launch offer for the first 50 members — 15% OFF + a FREE Welcome Kit! Forge your discipline. Start your bodyweight mastery journey today.
+          </motion.p>
+        </div>
 
         {/* CTA Actions - Perfectly aligned and centered */}
         <motion.div

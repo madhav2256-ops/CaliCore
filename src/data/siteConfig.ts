@@ -20,7 +20,7 @@ export const siteConfig = {
   mapDirections: 'https://maps.app.goo.gl/iU3XBP6M5CY19hN69',
   socials: {
     instagram: 'https://www.instagram.com/calicore1/',
-    whatsapp: 'https://wa.me/918076241590',
+    whatsapp: 'https://wa.me/918076241590?text=Hello%20CaliCore%20Academy!%20I%20would%20like%20to%20book%20a%20free%20trial%20session.%20Please%20share%20the%20details%20and%20timings.',
   },
   logo: '/logo.png',
   rating: { score: 5.0, count: 46, platform: 'Google' },
