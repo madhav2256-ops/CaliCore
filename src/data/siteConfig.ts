@@ -6,7 +6,8 @@ export const siteConfig = {
   description: 'Delhi\'s premier calisthenics, gymnastics & MMA academy. No machines. Pure bodyweight mastery.',
   phone: '+91 80762 41590',
   phoneDisplay: '+91 80762 41590',
-  email: 'info@calicore.in',
+  // PRE-LAUNCH DEV CHECK: Verify if there is an official business email before launch.
+  email: '',
   address: 'F215, Near Bal Bhavan School, Mangal Bazar, Block F, Laxmi Nagar, Delhi – 110092',
   addressShort: 'Laxmi Nagar, Delhi',
   coordinates: { lat: 28.6357271, lng: 77.2797573 },

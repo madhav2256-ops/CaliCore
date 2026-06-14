@@ -7,6 +7,9 @@ export interface Discipline {
   icon: string
   slug: string
   size: 'large' | 'medium' | 'small'
+  heroImage?: string
+  features?: string[]
+  levels?: ('Beginner' | 'Intermediate' | 'Advanced')[]
 }
 
 export interface Testimonial {
@@ -22,9 +25,24 @@ export interface TeamMember {
   name: string
   role: string
   bio: string
+  specialty?: string
+  image?: string
   socials: {
     instagram?: string
+    youtube?: string
   }
+}
+
+export interface BatchSlot {
+  time: string
+  className: string
+  instructor: string
+  discipline: string
+}
+
+export interface DaySchedule {
+  day: string
+  slots: BatchSlot[]
 }
 
 export interface BlogPost {

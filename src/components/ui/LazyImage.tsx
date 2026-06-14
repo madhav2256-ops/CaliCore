@@ -6,14 +6,18 @@ interface LazyImageProps {
   alt: string
   className?: string
   aspectRatio?: string
+  width?: number
+  height?: number
+  priority?: boolean
 }
 
-export function LazyImage({ src, alt, className, aspectRatio }: LazyImageProps) {
+export function LazyImage({ src, alt, className, aspectRatio, width, height, priority = false }: LazyImageProps) {
   const [loaded, setLoaded] = useState(false)
-  const [inView, setInView] = useState(false)
+  const [inView, setInView] = useState(priority)
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    if (priority) return
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -25,7 +29,7 @@ export function LazyImage({ src, alt, className, aspectRatio }: LazyImageProps) 
     )
     if (ref.current) observer.observe(ref.current)
     return () => observer.disconnect()
-  }, [])
+  }, [priority])
 
   return (
     <div
@@ -34,13 +38,17 @@ export function LazyImage({ src, alt, className, aspectRatio }: LazyImageProps) 
         'overflow-hidden bg-bg-elevated relative',
         className
       )}
-      style={aspectRatio ? { aspectRatio } : undefined}
+      style={{
+        aspectRatio: aspectRatio || (width && height ? `${width}/${height}` : undefined),
+      }}
     >
       {inView && (
         <img
           src={src}
           alt={alt}
-          loading="lazy"
+          width={width}
+          height={height}
+          loading={priority ? 'eager' : 'lazy'}
           onLoad={() => setLoaded(true)}
           className={cn(
             'w-full h-full object-cover transition-all duration-700',
