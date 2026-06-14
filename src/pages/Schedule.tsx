@@ -239,7 +239,7 @@ export default function Schedule() {
                 LOOKING FOR SPECIFIC TIMETABLES?
               </h3>
               <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
-                Specific timings for Kids gymnastics batches, dedicated female strength batches, MMA conditioning, and advanced calisthenics holds vary weekly. Contact us directly to get matching batch recommendations based on your profile.
+                Specific timings for Kids gymnastics batches, self-defense classes, and advanced calisthenics sessions vary weekly. Contact us directly to get matching batch recommendations based on your profile.
               </p>
             </div>
             <div className="flex gap-4 shrink-0 w-full md:w-auto">

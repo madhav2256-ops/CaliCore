@@ -13,13 +13,12 @@ const quickLinks = [
 
 const services = [
   'Calisthenics',
+  'Body Weight Training',
   'Gymnastics',
-  'MMA & Boxing',
+  'Kids Gymnastics',
   'Yoga',
-  'Kids Power',
-  'Female Batch',
-  'Core Strength',
-  'Endurance',
+  'Functional Strength Training',
+  'Self Defence',
 ]
 
 export function Footer() {

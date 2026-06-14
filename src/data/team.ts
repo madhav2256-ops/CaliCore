@@ -26,11 +26,11 @@ export const team: TeamMember[] = [
   },
   {
     id: 'placeholder-combat',
-    name: 'Certified Combat Coach',
-    role: 'MMA & Boxing Coach',
-    specialty: 'Striking & Combat Conditioning',
+    name: 'Certified Self Defence Coach',
+    role: 'Self Defence Coach',
+    specialty: 'Self Defence & Tactical Conditioning',
     image: 'https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=600&auto=format&fit=crop',
-    bio: 'Expert in combat mechanics, boxing drills, and physical self-defense classes for intermediate to advanced athletes.',
+    bio: 'Expert in defensive mechanics, threat de-escalation, and physical self-defense drills for beginners to advanced levels.',
     socials: {
       instagram: 'https://www.instagram.com/calicore1/',
     },

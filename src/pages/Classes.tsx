@@ -14,13 +14,12 @@ export default function Classes() {
   // Categories helper mapping
   const categories: Record<string, string> = {
     calisthenics: 'STRENGTH',
+    'body-weight-training': 'CONDITIONING',
     gymnastics: 'BALANCE',
-    'mma-boxing': 'COMBAT',
+    'kids-gymnastics': 'YOUTH',
     yoga: 'FLEXIBILITY',
-    'kids-power': 'YOUTH',
-    'female-batch': 'WOMEN ONLY',
-    'core-strength': 'FOUNDATION',
-    endurance: 'METABOLIC',
+    'functional-strength-training': 'ATHLETIC',
+    'self-defence': 'COMBAT',
   }
 
   const cardHover: any = {
@@ -33,8 +32,8 @@ export default function Classes() {
   return (
     <PageTransition>
       <SEO
-        title="Programs & Classes | CaliCore Academy — 8 Disciplines"
-        description="Explore CaliCore Academy's 8 machine-free disciplines in Laxmi Nagar: Calisthenics, Gymnastics, MMA & Boxing, Yoga, Kids Power, Female Batch, Core Strength, and Endurance."
+        title="Programs & Classes | CaliCore Academy — 7 Disciplines"
+        description="Explore CaliCore Academy's 7 machine-free disciplines in Laxmi Nagar: Calisthenics, Body Weight Training, Gymnastics, Kids Gymnastics, Yoga, Functional Strength Training, and Self Defence."
         url="/classes"
       />
 
@@ -55,7 +54,7 @@ export default function Classes() {
                 <span className="text-accent orange-glow">BODYWEIGHT</span>
               </h1>
               <p className="text-sm md:text-base text-text-secondary max-w-2xl leading-relaxed pt-2">
-                8 Elite Disciplines. Zero Machines. We build natural capability and structural force through bodyweight gymnastics, calisthenics, and combat training.
+                7 Elite Disciplines. Zero Machines. We build natural capability and structural force through bodyweight gymnastics, calisthenics, yoga, and self-defense.
               </p>
             </motion.div>
           </div>

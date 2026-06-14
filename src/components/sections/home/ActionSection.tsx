@@ -20,9 +20,9 @@ export function ActionSection() {
       desc: 'From absolute beginners to elite competitive athletes training under one roof.',
     },
     {
-      value: '9 Programs',
+      value: '7 Programs',
       label: 'TRAINING DISCIPLINES',
-      desc: 'Covering calisthenics, advanced gymnastics skills, MMA, yoga, and youth fitness batches.',
+      desc: 'Covering calisthenics, bodyweight training, gymnastics, kids gymnastics, yoga, functional strength, and self-defense.',
     },
     {
       value: 'ZERO',

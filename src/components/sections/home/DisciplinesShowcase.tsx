@@ -12,13 +12,12 @@ export function DisciplinesShowcase() {
   // Helper categories index matching for metadata
   const categories: Record<string, string> = {
     calisthenics: 'STRENGTH',
+    'body-weight-training': 'CONDITIONING',
     gymnastics: 'BALANCE',
-    'mma-boxing': 'COMBAT',
+    'kids-gymnastics': 'YOUTH',
     yoga: 'FLEXIBILITY',
-    'kids-power': 'YOUTH',
-    'female-batch': 'WOMEN ONLY',
-    'core-strength': 'FOUNDATION',
-    endurance: 'METABOLIC',
+    'functional-strength-training': 'ATHLETIC',
+    'self-defence': 'COMBAT',
   }
 
   return (
@@ -48,7 +47,7 @@ export function DisciplinesShowcase() {
         {/* Asymmetric Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
           {disciplines.map((d, i) => {
-            const isFeatured = d.slug === 'calisthenics' || d.slug === 'gymnastics'
+            const isFeatured = d.slug === 'calisthenics' || d.slug === 'gymnastics' || d.slug === 'body-weight-training'
             const isActive = activeSlugs.includes(d.slug)
             const category = categories[d.slug] || 'PERFORMANCE'
 
@@ -156,7 +155,7 @@ export function DisciplinesShowcase() {
             )
           })}
 
-          {/* 9th Free Trial Lead Card */}
+          {/* 8th Free Trial Lead Card */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -176,13 +175,13 @@ export function DisciplinesShowcase() {
 
                 <div className="relative z-10">
                   <div className="font-mono text-[9px] md:text-[10px] tracking-[0.2em] text-white/80 uppercase mb-3 font-bold">
-                    09 / LAUNCH PROMOTION
+                    08 / LAUNCH PROMOTION
                   </div>
                   <h3 className="font-display font-black text-2xl md:text-3xl uppercase leading-[1.1] tracking-tight text-white mb-2" style={{ fontFamily: 'var(--font-display)' }}>
                     START TRAINING TODAY
                   </h3>
                   <p className="text-xs text-white/95 leading-relaxed max-w-sm">
-                    Book your free trial batch session. Get a special 15% discount for the first 50 members. Delhi's premier movement forge is waiting.
+                    Book your free trial batch session. Get a special 15% discount for the first 50 members + FREE Official T-Shirt & Shaker Cup! Delhi's premier movement forge is waiting.
                   </p>
                 </div>
 

@@ -24,7 +24,7 @@ const statsData = [
   },
   {
     icon: Dumbbell,
-    value: 8,
+    value: 7,
     suffix: '',
     label: 'Disciplines Offered',
     sublabel: 'Pure bodyweight focus',

@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <SEO
         title="CaliCore Academy — Where Strength Is Built | Delhi's Premier Calisthenics Academy"
-        description="CaliCore Academy is Delhi's premier calisthenics, gymnastics & MMA training center in Laxmi Nagar. No machines. Pure bodyweight mastery. All ages welcome."
+        description="CaliCore Academy is Delhi's premier calisthenics, gymnastics & strength training center in Laxmi Nagar. No machines. Pure bodyweight mastery. All ages welcome."
         url="/"
       />
       <main id="main-content">

@@ -267,13 +267,13 @@ export default function Contact() {
                               className="w-full bg-transparent border-t-0 border-x-0 border-b border-white/10 focus:border-accent focus:ring-0 px-1 py-2 text-text-primary transition-colors text-sm cursor-pointer focus:outline-none"
                             >
                               <option value="" className="bg-bg-surface text-text-primary">Select a discipline</option>
-                              <option value="calisthenics" className="bg-bg-surface text-text-primary">Calisthenics & Bodyweight</option>
-                              <option value="gymnastics" className="bg-bg-surface text-text-primary">Gymnastics (Tumbling/Flips)</option>
-                              <option value="mma-boxing" className="bg-bg-surface text-text-primary">MMA & Boxing</option>
-                              <option value="yoga" className="bg-bg-surface text-text-primary">Yoga & Mobility</option>
-                              <option value="kids-power" className="bg-bg-surface text-text-primary">Kids Power batch (Ages 4+)</option>
-                              <option value="female-batch" className="bg-bg-surface text-text-primary">Female batch</option>
-                              <option value="core-endurance" className="bg-bg-surface text-text-primary">Core Strength & Endurance</option>
+                              <option value="calisthenics" className="bg-bg-surface text-text-primary">Calisthenics</option>
+                              <option value="body-weight-training" className="bg-bg-surface text-text-primary">Body Weight Training</option>
+                              <option value="gymnastics" className="bg-bg-surface text-text-primary">Gymnastics</option>
+                              <option value="kids-gymnastics" className="bg-bg-surface text-text-primary">Kids Gymnastics</option>
+                              <option value="yoga" className="bg-bg-surface text-text-primary">Yoga</option>
+                              <option value="functional-strength" className="bg-bg-surface text-text-primary">Functional Strength Training</option>
+                              <option value="self-defence" className="bg-bg-surface text-text-primary">Self Defence</option>
                             </select>
                           </div>
 

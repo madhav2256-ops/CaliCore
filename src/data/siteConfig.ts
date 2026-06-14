@@ -3,7 +3,7 @@ export const siteConfig = {
   fullName: 'CaliCore Academy',
   tagline: 'Where Strength Is Built. Where Discipline Is Forged. Where Champions Rise.',
   shortTagline: 'Where Strength Is Built',
-  description: 'Delhi\'s premier calisthenics, gymnastics & MMA academy. No machines. Pure bodyweight mastery.',
+  description: 'Delhi\'s premier calisthenics, gymnastics & strength academy. No machines. Pure bodyweight mastery.',
   phone: '+91 80762 41590',
   phoneDisplay: '+91 80762 41590',
   // PRE-LAUNCH DEV CHECK: Verify if there is an official business email before launch.
@@ -27,7 +27,7 @@ export const siteConfig = {
   stats: {
     members: '1800+',
     rating: '5.0★',
-    disciplines: '9',
+    disciplines: '7',
     established: 'Est. 2026',
   },
 } as const
