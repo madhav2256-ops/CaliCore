@@ -1,107 +1,91 @@
-# CALICORE — Complete Context & Design System Document
+# CALICORE ACADEMY — Complete Context & Design System Document
 Last Updated: 2026-06-14
-Source: Brand Definition, Assets Mapping, and Code Architecture Rules for CaliCore
+Source: Scraping database, Instagram grid info, Google Business, and Visual branding analysis of CaliCore Academy
 
 ---
 
 ## 1. BUSINESS IDENTITY
-* **Brand Name:** CaliCore — "Engineered Movement"
-* **Tagline:** "Master Your Body, Control Your Mind" / "Pure Bodyweight Mastery"
-* **Core Philosophy:** Machine-free training environment. Elite physical development powered purely by bodyweight, gravity, and precision mechanics.
-* **Disciplines Offered:**
-  1. **Gymnastics** — Precision coordination, tumbling, and adult/child skill work.
-  2. **Calisthenics** — Static hold masteries (Human Flag, Planche, Front Lever) and weighted bodyweight progression.
-  3. **Parkour & Freerunning** — Precision jumping, vaulting, and fluid spatial locomotion.
-  4. **Yoga** — Advanced mobility, flexibility, and breathing control.
-  5. **Functional Training** — Cross-training, metabolic conditioning, and compound speed-strength.
-  6. **Movement Culture** — Locomotion patterns, animal flows, and mobility prep.
-  7. **Mixed Martial Arts (MMA)** — Core conditioning, striking, and martial movements.
-  8. **Free Weights Training** — Selective supplementary lifts for strength integration.
+* **Brand Name:** CaliCore Academy (also stylized as "CALICORE" or "Cali Core")
+* **Hero Tagline:** "Where Strength Is Built. Where Discipline Is Forged. Where Champions Rise."
+* **Core Philosophy:** Laxmi Nagar's premier machine-free calisthenics, gymnastics, and MMA training academy. A skill-based, community-focused environment where athletes learn to master their own bodyweight.
+* **Launch Date:** April 1st, 2026 (Launch Promo: "Special offer for 1st 50 members — 15% OFF")
+* **Google Business Profile Description:** 
+  > "CaliCore Academy is one of the best calisthenics and fitness training centers in Laxmi Nagar, Delhi. We specialize in calisthenics, gymnastics training, MMA training, yoga classes, weight training, bodyweight training, and self-defense. Our academy offers professional coaching for beginners to advanced athletes, helping you build strength, lose fat, improve flexibility, and achieve overall fitness naturally. We provide structured programs for calisthenics, MMA, yoga, and functional fitness without relying on heavy machines. Join CaliCore Academy today."
 
 ---
 
 ## 2. BRAND COLOR PALETTE & STYLING TOKENS
-To ensure premium visual aesthetics, all styling must strictly conform to these CSS variables defined in the system.
+To ensure premium visual aesthetics, all styling must conform to the brand visual theme below:
 
-### Color Tokens
-* **Background Primary (`--color-bg-primary`):** `#090909` — Ultra-dark matte background to create high contrast.
-* **Background Surface (`--color-bg-surface`):** `#111111` — Dark obsidian surface for cards and navigation bars.
-* **Background Elevated (`--color-bg-elevated`):** `#1A1A1A` — Lighter charcoal shade for active states or elevated components.
-* **Accent (`--color-accent`):** `#FF5722` — Kinetic Energy Orange, represents power, movement, and intensity.
-* **Accent Hover (`--color-accent-hover`):** `#FF7043` — Bright highlight state for user interactions.
-* **Accent Glow (`--color-accent-glow`):** `rgba(255, 87, 34, 0.15)` — Transparent tint for backlights and glow borders.
-* **Text Primary (`--color-text-primary`):** `#F5F5F5` — Soft off-white to prevent eye strain while maintaining legibility.
-* **Text Secondary (`--color-text-secondary`):** `#A0A0A0` — Clean mid-grey for secondary paragraphs and descriptions.
-* **Text Muted (`--color-text-muted`):** `#555555` — Dark grey for captions, borders, and inactive tabs.
-* **Border (`--color-border`):** `rgba(255, 255, 255, 0.08)` — Subtle container dividing borders.
-* **Border Accent (`--color-border-accent`):** `rgba(255, 87, 34, 0.3)` — Accent focus borders.
+### Brand Color Tokens
+* **Background Primary (`--color-bg-primary`):** `#090909` — Gritty industrial matte black/dark background.
+* **Background Surface (`--color-bg-surface`):** `#121212` — Obsidian surface for container cards, headers, and grids.
+* **Background Elevated (`--color-bg-elevated`):** `#1C1C1C` — Elevated background for hover states and cards.
+* **Accent Primary (`--color-accent`):** `#FF5722` — Fiery Orange-Red (representing the fire engulfed C in the logo and the signature wall mural).
+* **Accent Secondary (`--color-accent-gold`):** `#FFB300` — Gold/Amber (logo crest border and highlight tone).
+* **Accent Neon Blue (`--color-neon-blue`):** `#00D2FF` — Blue neon (matching the blue custom neon "CALICORE" signage in the gym).
+* **Accent Neon White (`--color-neon-white`):** `#FFFFFF` — White neon glow highlight.
+* **Text Primary (`--color-text-primary`):** `#F5F5F5` — Soft off-white for primary readability.
+* **Text Secondary (`--color-text-secondary`):** `#A5A5A5` — Steel grey for secondary paragraphs and subtitles.
+* **Text Muted (`--color-text-muted`):** `#606060` — Dark steel grey for footer credits, disabled state, and subtle borders.
+* **Border (`--color-border`):** `rgba(255, 255, 255, 0.08)` — Grid lines and separator borders.
+* **Border Accent (`--color-border-accent`):** `rgba(255, 87, 34, 0.3)` — Highlighting borders.
 
-### Fluid Layout & Grid System
-* **Fluid Heading Typography (clamp):**
+### Typography (clamp)
+* **Font Family:** 'Geist Variable', system-ui, sans-serif
+* **Scale:**
   * Hero Text: `clamp(1.75rem, 7vw, 7rem)`
-  * H1 (Main Page Header): `clamp(1.5rem, 4.5vw, 4.5rem)`
-  * H2 (Section Title): `clamp(1.2rem, 3vw, 2.75rem)`
-  * H3 (Card Title): `clamp(1rem, 1.8vw, 1.75rem)`
-  * Body text: `clamp(0.875rem, 1.1vw, 1rem)`
-  * Small captions: `clamp(0.75rem, 0.9vw, 0.875rem)`
-* **Section Spacing:**
-  * Fluid vertical padding: `--section-py: clamp(2.5rem, 6vw, 6rem)`
-  * Fluid grid gaps:
-    * `--gap-sm: clamp(0.75rem, 2vw, 1.25rem)`
-    * `--gap-md: clamp(1rem, 2.5vw, 2rem)`
-    * `--gap-lg: clamp(1.5rem, 4vw, 4rem)`
-* **Borders & Radius:**
-  * Small inputs/tags: `--radius-sm (4px)`
-  * Cards/Buttons: `--radius-md (8px)`
-  * Interactive features/Modals: `--radius-lg (16px)` / `--radius-xl (24px)`
+  * H1 (Main Page Headers): `clamp(1.5rem, 4.5vw, 4.5rem)`
+  * H2 (Section Titles): `clamp(1.2rem, 3vw, 2.75rem)`
+  * H3 (Card Headers): `clamp(1rem, 1.8vw, 1.75rem)`
+  * Body Text: `clamp(0.875rem, 1.1vw, 1rem)`
+  * Subtext: `clamp(0.75rem, 0.9vw, 0.875rem)`
 
 ---
 
 ## 3. CONTACT & LOCATION DATA
-* **Address:** `[Enter CaliCore Academy Street Address]`
-* **Google Maps Embed:** `[Enter Google Maps Embed URL]`
-* **Google Maps Directions Route Link:** `[Enter Google Maps Directions URL]`
-* **Phone Numbers:**
-  * Primary: `[Enter CaliCore Primary Phone Number]`
-  * Landline: `[Enter CaliCore Landline Number]`
-* **Official Emails:**
-  * General Info: `info@calicore.in`
-  * Member Support: `support@calicore.in`
-* **Working Hours:**
-  * Monday – Saturday: `06:00 – 22:00` (Or custom operating hours)
+* **Address:** F215, Near Bal Bhavan School, Mangal Bazar, Block F, Laxmi Nagar, Delhi – 110092
+* **Phone/WhatsApp:** `+91 80762 41590` (listed as `080762 41590` on Google)
+* **Google Maps Link:** `https://maps.google.com/?q=CALICORE+Academy+Laxmi+Nagar` (directions: `maps.app.goo.gl/iU3XBP6M5CY19hN69`)
+* **Coordinates:** `~28.6357271, 77.2797573`
+* **Social Handle:** Instagram [@calicore1](https://www.instagram.com/calicore1/)
+* **Official Email:** `info@calicore.in` / `support@calicore.in`
+* **Operating Hours:**
+  * Monday – Saturday: `06:00 – 11:00` & `16:00 – 22:00`
   * Sunday: `CLOSED`
 
+---
+
+## 4. PROGRAMS & DISCIPLINES
+The website must feature these specific classes and programs:
+1. **Calisthenics & Body Weight Training** — Fundamental bodyweight strength and progressions.
+2. **Advanced Skills ("Advance")** — Advanced calisthenics, bar skills, and gymnastics holds (Planche, Human Flag, Front Lever).
+3. **Gymnastics Training** — Flips, handstands, tumbling workshops (e.g. Backflip Workshop highlights).
+4. **Kids Power & Kids Gymnastics** — Specialized youth training programs, drills, and kid-focused gymnastics competitions.
+5. **MMA & Boxing** — Boxing, Mixed Martial Arts, combat conditioning, and self-defense.
+6. **Yoga Classes** — Core mobility, flexibility, breathing, and body awareness.
+7. **Female Batch** — Dedicated coaching sessions for women's fitness, strength, and mobility.
+8. **Core Strength & Endurance** — Targeted high-intensity sessions focusing on core reinforcement and metabolic conditioning.
 
 ---
 
-## 4. NAVIGATION & SITE MAP
-The codebase must support these paths and structures:
-* `src/pages/Home.tsx` — Hero entrance, key discipline cards, feature video highlights, testimonial carousels, and CTA sections.
-* `src/pages/About.tsx` — History of physical training, founder profile, and team biographies.
-* `src/pages/Classes.tsx` — Interactive showcase grid of all 8 movement patterns.
-* `src/pages/Schedule.tsx` — Weekly timetable showing timeslots by discipline and instructor.
-* `src/pages/Blog.tsx` — List of training articles, nutrition guidelines, and muscle tutorials.
-* `src/pages/Contact.tsx` — Interactive map, contact information, FAQ accordion, and secure contact form.
-* `src/pages/NotFound.tsx` — Custom 404 page styled with neon accent elements and automatic redirection links.
+## 5. COMMUNITY REVIEW SNIPPETS (Google 5.0★, 46 reviews)
+* *"Amazing experience and quality service"* — 5★
+* *"It's a nice place for both beginners and advanced athletes."* — 5★
+* *"The environment is very motivating and beginner-friendly."* — 5★
 
 ---
 
-## 5. DESIGN SYSTEMS & ACCESSIBILITY REQUIREMENTS (RULES FOR COMMITS)
-Every code contribution/modification must strictly follow these rules:
+## 6. WEBSITE STRUCTURE & CODE REQUIREMENTS
+* `src/pages/Home.tsx` — Hero entrance with fire/steel visuals, custom neon headings, program list, testimonial slider, and promotional CTA.
+* `src/pages/About.tsx` — Story of CaliCore, the concrete-and-bar industrial facility look, and professional coaches profile.
+* `src/pages/Classes.tsx` — Searchable grid of the 8 core programs.
+* `src/pages/Schedule.tsx` — Split schedule system showing timings (Morning 6–11 AM, Evening 4–10 PM).
+* `src/pages/Blog.tsx` — Training tips (e.g. "Delhi's New Home for Strength & Skills", "Backflip Progression Guides", "Core Sessions").
+* `src/pages/Contact.tsx` — Laxmi Nagar interactive map embed, working hours, and WhatsApp inquiry buttons.
 
-1. **Keep Colors Consistent:** Do not use plain hardcoded colors (like `#ff0000` or `red`). Always use the custom theme variables (e.g. `bg-primary`, `accent`, `text-secondary`) or equivalent utility classes.
-2. **Glassmorphism Principle:** Floating menus, headers, and popups must use a semi-transparent dark background with blur effects (`backdrop-filter: blur(12px)`).
-3. **Typography Standards:** Always use the display variable font (`Geist Variable` or standard system sans-serif fallback). Use correct semantic headings hierarchy: exactly one `<h1>` per page.
-4. **Performance Optimization:**
-   * Images must load lazily through a custom `<LazyImage />` component.
-   * Native assets (like `sharp` configurations) should resize content properly.
-   * Split vendor libraries (`framer-motion`, `react-router-dom`) into separate bundle chunks inside `vite.config.ts`.
-5. **Interactive Feedback (WOW factor):**
-   * Use micro-animations (scale, slide, rotation on hover/active states) using Framer Motion.
-   * Transition between page states smoothly using `<PageTransition>` components.
-6. **SEO Best Practices:**
-   * Each page must declare custom meta headers (Title, Meta Description, OpenGraph tags) using `react-helmet-async`.
-7. **Accessibility (a11y):**
-   * Keep focus indicators visible on keyboard tab-navigation (`:focus-visible`).
-   * Include a `#main-content` skip link (`skip-nav`) at the top of the header.
-   * Respect reduced-motion preferences (`prefers-reduced-motion: reduce`) by disabling dynamic slide/transform behaviors.
+---
+
+## 7. CODE AND VISUAL GUIDELINES
+* **Visual Theme:** Gritty industrial gym interior. Dark concrete textures, neon glow elements (blue and white neon text effects), and fiery gradients (`linear-gradient(to right, #FF5722, #FFB300)`).
+* **Code Implementation:** No hardcoded layout sizing; use modern fluid spacing `--section-py` and `--gap-md`. Every image must utilize `<LazyImage>` to ensure speed performance. All dynamic entries must use custom Framer Motion variants.
